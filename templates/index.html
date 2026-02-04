@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIFAR-10 Image Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">🤖 CIFAR-10 Image Classifier</h1>
+                <p class="subtitle">Upload an image to classify it into one of 10 categories</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-card">
+                    <div class="upload-area" id="uploadArea">
+                        <input type="file" id="fileInput" accept="image/*" hidden>
+                        <div class="upload-icon">📁</div>
+                        <h3>Drag & Drop Image Here</h3>
+                        <p>or click to browse</p>
+                        <p class="file-info">Supported: PNG, JPG, JPEG, GIF, BMP, WEBP (Max 16MB)</p>
+                    </div>
+                    
+                    <!-- Image Preview -->
+                    <div class="preview-container" id="previewContainer" style="display: none;">
+                        <img id="imagePreview" src="" alt="Preview">
+                        <button class="btn-remove" id="removeBtn">✕ Remove</button>
+                    </div>
+                    
+                    <!-- Predict Button -->
+                    <button class="btn-predict" id="predictBtn" style="display: none;">
+                        <span id="btnText">🔍 Classify Image</span>
+                        <span class="loader" id="btnLoader" style="display: none;"></span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-card">
+                    <h2 class="results-title">Prediction Results</h2>
+                    
+                    <!-- Top Prediction -->
+                    <div class="top-prediction" id="topPrediction">
+                        <div class="prediction-label">Top Prediction</div>
+                        <div class="prediction-class" id="topClass">-</div>
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" id="topConfidenceFill" style="width: 0%"></div>
+                        </div>
+                        <div class="confidence-text" id="topConfidence">0%</div>
+                    </div>
+
+                    <!-- Top 5 Predictions -->
+                    <div class="predictions-list">
+                        <h3>Top 5 Predictions</h3>
+                        <div id="predictionsList"></div>
+                    </div>
+
+                    <!-- All Classes -->
+                    <div class="all-predictions">
+                        <h3>All Classes</h3>
+                        <div class="predictions-grid" id="allPredictions"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Error Section -->
+            <section class="error-section" id="errorSection" style="display: none;">
+                <div class="error-card">
+                    <div class="error-icon">⚠️</div>
+                    <h3>Error</h3>
+                    <p id="errorMessage"></p>
+                    <button class="btn-retry" id="retryBtn">Try Again</button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="class-tags">
+                <span class="tag">✈️ Airplane</span>
+                <span class="tag">🚗 Automobile</span>
+                <span class="tag">🐦 Bird</span>
+                <span class="tag">🐱 Cat</span>
+                <span class="tag">🦌 Deer</span>
+                <span class="tag">🐕 Dog</span>
+                <span class="tag">🐸 Frog</span>
+                <span class="tag">🐴 Horse</span>
+                <span class="tag">🚢 Ship</span>
+                <span class="tag">🚚 Truck</span>
+            </div>
+            <p class="footer-text">Powered by PyTorch & Flask • CIFAR-10 CNN Model</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
